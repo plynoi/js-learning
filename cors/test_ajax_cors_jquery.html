@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Test Snapshot Request with Web Worker</title>
+		<script language="javascript" src="jquery-2.0.2.min.js"></script>
+		<script language="javascript">
+			var testUrl='http://<express_core.js url>:8888';
+			$(document).ready(function(){
+				$.ajax({
+					url:testUrl,
+					type:'GET',
+					dataType:'json',
+					crossDomain: true,
+					contentType:'application/json',
+					data:null,
+					success: function(data) {
+						$('#display').html(JSON.stringify(data));
+					},
+					error: function(jqXHR, textStatus, errorThrown) {
+						$('#display').html(textStatus);
+					}
+				});
+
+			});
+				
+		</script>
+	</head>
+	<body>
+		<div id="display"></div>
+	</body>
+</html>
