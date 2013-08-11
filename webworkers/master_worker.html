@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Master of Web Worker</title>
+		<script language="javascript">
+			window.onload=function(){
+				var wk=new Worker("./slave_worker.js");
+				wk.addEventListener("message",function(oEvent){
+					document.getElementById('display').textContent = JSON.stringify(oEvent.data);
+				},false);
+
+				wk.postMessage({
+					master:'This is master Say Hello'
+				});
+			};
+		</script>
+	</head>
+	<body>
+		<div id="display"></div>
+	</body>
+</html>
